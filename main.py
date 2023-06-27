@@ -6,11 +6,33 @@ import pandas as pd
 
 def create():
 	print("CREATE ---------------------------------------")
+	new_id = [input("New ID?:\n")]
+	new_name = [input("New name?:\n")]
+	new_time = [input("New time?:\n")]
+	new_message = [input("New message?:\n")]
+
+
+
+	alarm_db = pd.read_csv('alarm_db.csv')
+	new = pd.DataFrame({
+		"id":new_id,
+		"name":new_name,
+		"time":new_time,
+		"message":new_message
+	}, 
+	index = [len(alarm_db)]
+	)
+
+
+	
+	alarm_db = pd.concat([alarm_db, new])
+	print(alarm_db)
+	alarm_db.to_csv('alarm_db.csv', index=False)
 
 def read():
 	print("READ -----------------------------------------")
-	student = pd.read_csv('alarm_db.csv')
-	print(student)
+	alarm_db = pd.read_csv('alarm_db.csv')
+	print(alarm_db)
 	print("----------------------------------------------")
 
 def update():
@@ -21,7 +43,7 @@ def delete():
 
 def menu():
 	print(f"1.\tCreate\n2.\tRead\n3.\tUpdate\n4.\tDelete\n")
-	reply = input("What u want?: \n")
+	reply = input("What u want?:\n")
 
 
 
