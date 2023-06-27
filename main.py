@@ -5,43 +5,40 @@
 import pandas as pd
 
 def create():
-    print("CREATE")
+	print("CREATE ---------------------------------------")
 
 def read():
-    print("READ")
-    student = pd.read_csv('alarm_db.csv')
-    print(student)
+	print("READ -----------------------------------------")
+	student = pd.read_csv('alarm_db.csv')
+	print(student)
+	print("----------------------------------------------")
 
 def update():
-    print("UPDATE")
+	print("UPDATE ---------------------------------------")
 
 def delete():
-    print("UPDATE")
+	print("DELETE ---------------------------------------")
 
 def menu():
-    print(f"1.\tCreate\n2.\tRead\n3.\tUpdate\n4.\tDelete\n")
-    reply = input("What u want?: \n")
-
-    
-
-    ireply = int(reply)
-    
-    
-
-    if(ireply == 1):
-        create()
-    elif(ireply == 2):
-        read()
-    elif(ireply == 3):
-        update()
-    elif(ireply == 4):
-        delete()
-    else:
-        print("weirdo man ka")
+	print(f"1.\tCreate\n2.\tRead\n3.\tUpdate\n4.\tDelete\n")
+	reply = input("What u want?: \n")
 
 
 
-    print("\n\n")
-    menu()
+	if(reply == '1'):
+		create()
+	elif(reply == '2'):
+		read()
+	elif(reply == '3'):
+		update()
+	elif(reply == '4'):
+		delete()
+	else:
+		print("weirdo man ka")
+
+
+
+	print("\n\n")
+	menu()
 
 menu()
