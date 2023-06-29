@@ -4,6 +4,13 @@
 # HEADER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 import pandas as pd
 
+
+
+pd.set_option('display.max_rows', None)
+pd.set_option('display.max_columns', None)
+
+
+
 def create():
 	print("CREATE ---------------------------------------")
 	new_id = [input("New ID?:\n")]
@@ -24,10 +31,11 @@ def create():
 	)
 
 
-	
+
 	alarm_db = pd.concat([alarm_db, new])
 	print(alarm_db)
 	alarm_db.to_csv('alarm_db.csv', index=False)
+	print("----------------------------------------------")
 
 def read():
 	print("READ -----------------------------------------")
@@ -37,6 +45,18 @@ def read():
 
 def update():
 	print("UPDATE ---------------------------------------")
+	index = int(input("Index Number?:\n"))
+	column = input("Column Name?:\n")
+	new_value = input("New value?:\n")
+
+	
+	
+	alarm_db = pd.read_csv('alarm_db.csv')
+	alarm_db.at[index, column] = new_value
+
+
+
+	alarm_db.to_csv('alarm_db.csv', index=False)
 
 def delete():
 	print("DELETE ---------------------------------------")
