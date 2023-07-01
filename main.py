@@ -7,7 +7,7 @@ import pandas as pd
 
 
 pd.set_option('display.max_rows', None)
-pd.set_option('display.max_columns', None)
+pd.set_option('display.max_columns', 5)
 
 
 
@@ -17,6 +17,7 @@ def create():
 	new_name = [input("New name?:\n")]
 	new_time = [input("New time?:\n")]
 	new_message = [input("New message?:\n")]
+	new_channel = [input("New channel?:\n")]
 
 
 
@@ -25,7 +26,8 @@ def create():
 		"id":new_id,
 		"name":new_name,
 		"time":new_time,
-		"message":new_message
+		"message":new_message,
+		"message":new_channel
 	}, 
 	index = [len(alarm_db)]
 	)
@@ -60,6 +62,11 @@ def update():
 
 def delete():
 	print("DELETE ---------------------------------------")
+	index = int(input("Index Number?:\n"))
+	
+	alarm_db = pd.read_csv('alarm_db.csv')
+	alarm_db = alarm_db.drop( index, axis=0)
+	alarm_db.to_csv('alarm_db.csv', index=False)
 
 def menu():
 	print(f"1.\tCreate\n2.\tRead\n3.\tUpdate\n4.\tDelete\n")
